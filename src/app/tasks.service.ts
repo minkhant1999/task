@@ -3,55 +3,32 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 // import { MessageService } from './message.service';
-import { Employee } from './employee';
- 
+import { Task } from './tasks';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class TaskService {
   url: string;
-  link: string;
 
 
   constructor(private httpClient: HttpClient) {
-    this.url = "http://10.201.118.7:9000/task-management-tool/employees/username?userName=mariko";
-    // this.link = "http://10.201.118.7:9000/task-management-tool/employees/lists";
+    this.url = "http://10.201.118.7:9000/task-management-tool/jira-tasks/main-tasks";
   }
 
-  getEmployee(id: number): Observable<any> {
+  getTask(id: number): Observable<any> {
     return this.httpClient.get(`${this.url}/${id}`);
   }
-  // create employee phase 2
-  createEmployee(employee: Object): Observable<Object> {
-    return this.httpClient.post(`${this.url}`, employee);
-  }
-  // update employee phase 2
-  updateEmployee(id: number, value: any): Observable<Object> {
-    return this.httpClient.put(`${this.url}/${id}`, value);
-  }
-  // delete employee phase 2
-  deleteEmployee(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.url}/${id}`, { responseType: 'text' });
-  }
-  // getting employee list from API
-  getEmployeeList(): Observable<any> {
+
+  // getting task list from API
+  getTaskList(): Observable<any> {
     console.log(this.httpClient.get(`${this.url}`));
     return this.httpClient.get(`${this.url}`);
   }
-
-  /* GET heroes whose name contains search term */
-  searchEmployee(term: string): Observable<Employee[]> {
-    if (!term.trim()) {
-      // if not search term, return empty hero array.
-      return of([]);
-    }
-    return this.httpClient.get<Employee[]>(`${this.url}/?name=${term}`).pipe(
-      tap(x => x.length ?
-        console.log(`found heroes matching "${term}"`) :
-        console.log(`no heroes matching "${term}"`)),
-      catchError(this.handleError<Employee[]>('searchEmployee', []))
-    );
+  // create employee phase 2
+  createTask(Task: Object): Observable<Object> {
+    return this.httpClient.post(`${this.url}`, Task);
   }
 
   /**

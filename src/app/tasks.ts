@@ -1,0 +1,9 @@
+export class Task {
+    task: string;
+    pname:string;
+    issueType:string;
+    crNo:string;
+    dueDate:string;
+    issueStatus:string;
+
+}

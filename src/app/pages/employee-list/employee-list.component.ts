@@ -12,12 +12,7 @@ import { Employee } from 'src/app/employee';
 })
 export class EmployeeListComponent implements OnInit {
 
-  // public user = {
-  //   name: 'Izzat Nadiri',
-  //   age: 26
-  // }
-
-  employees: Observable<Employee[]>;
+  employees: Observable<Employee[]>;  
   constructor(private employeeService: EmployeeService, private router: Router,public modalService: NgbModal ) { }
 
   ngOnInit(): void {
@@ -42,8 +37,8 @@ export class EmployeeListComponent implements OnInit {
   }
 
   employeeDetails(id: number){
-    console.log()
-    this.router.navigate(['details', id]);  
+    console.log(id);
+    this.router.navigate(['profile']);  
   }
   
   

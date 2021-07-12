@@ -9,9 +9,10 @@ import { EmployeeListComponent } from 'src/app/pages/employee-list/employee-list
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
     { path: 'employee',   component: EmployeeListComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent }
+    { path: 'maps',           component: MapsComponent },
+    { path: 'profile',           component: UserProfileComponent }
+
 ];

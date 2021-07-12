@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Task } from 'src/app/tasks';
+import { Employee } from 'src/app/employee';
 import { TaskService } from 'src/app/tasks.service';
 
 @Component({
@@ -8,9 +11,21 @@ import { TaskService } from 'src/app/tasks.service';
 })
 export class TablesComponent implements OnInit {
 
-  constructor() { }
+  tasks: Observable<Task[]>;
+
+  constructor(
+    private taskService:TaskService
+  ) { }
 
   ngOnInit(): void {
+    this.reloadData();
+  }
+  reloadData() {
+    this.taskService.getTaskList().subscribe(data => {
+      this.tasks = data.result;
+      console.log(this.tasks);
+    });
+  }
 
-  }  }
-  
+
+}
