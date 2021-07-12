@@ -15,7 +15,7 @@ export class TaskService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.url = "http://10.201.118.7:9000/task-management-tool/employees/lists";
+    this.url = "http://10.201.118.7:9000/task-management-tool/employees/username?userName=mariko";
     // this.link = "http://10.201.118.7:9000/task-management-tool/employees/lists";
   }
 

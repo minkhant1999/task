@@ -1,4 +1,3 @@
-import { SrvRecord } from "dns";
 
 export class Employee {
     id: number;

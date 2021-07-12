@@ -5,17 +5,34 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-6">
                     <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-                      <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
-                        <div class="input-group input-group-alternative">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                          </div>
-                          <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
-                          (blur)="focus = false">
+                        <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
+                                    (blur)="focus = false">
+                            </div>
                         </div>
-                      </div>
                     </form>
-                  </div>
+                </div>
+                <!-- Dropdown list by userName -->
+                <div class="col-xl-3 col-lg-6">
+                    <form class="form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                        <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+                            <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                                <button class="btn btn-warning" ngbDropdownToggle>Select Username</button>
+                                <div class="dropdown-menu" ngbDropdownMenu>
+                                    <tr *ngFor="let employee of employees">
+                                        <button (click)="employeeDetails(employee.id)" ngbDropdownItem>{{employee.userName}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Dropdown -->
+                <div class="col-xl-3 col-lg-6">  
+                </div>
             </div>
         </div>
     </div>
