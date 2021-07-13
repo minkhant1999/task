@@ -52,11 +52,13 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
+                <th scope="col">Task</th>
+                <th scope="col">CR No</th>
                 <th scope="col">Project</th>
-                <th scope="col">Description</th>
-                <th scope="col">Status</th>
-                <th scope="col">People</th>
-                <th scope="col">Completion</th>
+                <th scope="col">Type</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Due Date</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -64,16 +66,13 @@
               <tr *ngFor="let task of tasks">
                 <th scope="row">
                   <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                    </a>
                     <div class="media-body">
                       <span class="mb-0 text-sm">{{task.task}}</span>
                     </div>
                   </div>
                 </th>
                 <td>
-                  {{task.task}}
+                  {{task.crNo}}
                 </td>
                 <td>
                   {{task.pname}}
@@ -81,7 +80,9 @@
                 <td>
                   {{task.issueType}}
                 </td>
-                <td></td>
+                <td>
+                  {{task.dueDate}}
+                </td>
               </tr>
             </tbody>
           </table>
