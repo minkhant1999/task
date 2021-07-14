@@ -23,8 +23,9 @@ export class TaskService {
 
   // getting task list from API
   getTaskList(): Observable<any> {
+    let param: any = {'offset': 0, 'limit':100};
     console.log(this.httpClient.get(`${this.url}`));
-    return this.httpClient.get(`${this.url}`);
+    return this.httpClient.get(`${this.url}`, {params: param});
   }
   // create employee phase 2
   createTask(Task: Object): Observable<Object> {
