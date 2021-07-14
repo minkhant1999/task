@@ -16,7 +16,6 @@ export class EmployeeService {
 
   constructor(private httpClient: HttpClient) {
     this.url = "http://10.201.118.7:9000/task-management-tool/employees/lists";
-    // this.link = "http://10.201.118.7:9000/task-management-tool/employees/lists";
   }
 
   getEmployee(id: number): Observable<any> {
@@ -36,8 +35,10 @@ export class EmployeeService {
   }
   // getting employee list from API
   getEmployeeList(): Observable<any> {
+    let param: any = {'offset': 0, 'limit':100};
+
     console.log(this.httpClient.get(`${this.url}`));
-    return this.httpClient.get(`${this.url}`);
+    return this.httpClient.get(`${this.url}`, {params: param});
   }
 
   /* GET heroes whose name contains search term */
