@@ -4,7 +4,7 @@ import { Task } from 'src/app/tasks';
 import { Employee } from 'src/app/employee';
 import { TaskService } from 'src/app/tasks.service';
 import { EmployeeService } from 'src/app/employee.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
@@ -15,7 +15,7 @@ export class TablesComponent implements OnInit {
   employees: Observable<Employee[]>;
   tasks: Observable<Task[]>;
 
-  constructor(private taskService: TaskService, private employeeService: EmployeeService) {
+  constructor(private taskService: TaskService, private router: Router, private employeeService: EmployeeService) {
   }
 
   ngOnInit(): void {
@@ -35,6 +35,9 @@ export class TablesComponent implements OnInit {
       console.log(this.employees);
     });
   }
-
-
+  
+  profile(id: number){
+    console.log(id);
+    this.router.navigate(['profile',id]);  
+  }
 }

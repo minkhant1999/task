@@ -30,7 +30,7 @@
                                 <button class="btn btn-warning" ngbDropdownToggle>Select Username</button>
                                 <div class="dropdown-menu" ngbDropdownMenu>
                                     <tr *ngFor="let employee of employees">
-                                        <button (click)="employeeDetails(employee.id)" ngbDropdownItem>{{employee.userName}}</button>
+                                        <button (click)="profile(employee.id)" ngbDropdownItem>{{employee.userName}}</button>
                                 </div>
                             </div>
                         </div>
@@ -89,20 +89,10 @@
                                 </td>
                                 <td>
                                     {{employee.department}}
-                                </td>
-
-                                <td class="text-right">
-                                    <div ngbDropdown placement="bottom-right">
-                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                                        </div>
-                                    </div>
-                                </td>
+                                </td>  
+                                <td>
+                                    <button (click)="profile(employee.id)">Go To Profile</button>
+                                </td>                           
                             </tr>
                         </tbody>
                     </table>

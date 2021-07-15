@@ -13,7 +13,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { EmployeeListComponent } from './pages/employee-list/employee-list.component';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -23,13 +25,16 @@ import { EmployeeListComponent } from './pages/employee-list/employee-list.compo
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSelectModule,
+    MatButtonModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    ProfileComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

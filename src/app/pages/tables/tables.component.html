@@ -3,7 +3,7 @@
     <div class="header-body">
       <!-- Card stats -->
       <div class="row">
-        <!-- date picker -->
+        <!---------------------------- dropdown By Task -------------------------------------------->
         <div class="col-300px col-300px">
           <form name="form" (ngSubmit)="form.valid && onSubmit()" #form="ngForm">
             <div class="form-group">
@@ -17,35 +17,11 @@
                   {{task.task}}
                 </option>
               </select>
-              <!-- Required Validation Message -->
-              <div *ngIf="form.submitted && DDCategory.invalid" class="text-danger">
-                <h6 *ngIf="DDCategory.errors.required">Category is Required</h6>
-              </div>
             </div>
-            <button class="btn btn-primary">Submit</button>
           </form>
         </div>
         <!---------------------------- dropdown By Issue Status -------------------------------------------->
         <div class="col-xl-3 col-lg-6">
-          <form name="form" (ngSubmit)="form.valid && onSubmit()" #form="ngForm">
-            <div class="form-group">
-              <!-- DropDownList -->
-              <select class="custom-select" name="DDCategory" [(ngModel)]="issueStatusList" #DDCategory="ngModel"
-                [ngClass]="{ 'is-invalid': form.submitted && DDCategory.invalid }" required>
-                <option value="" class="text-primary font-weight-bolder">
-                  --- Select Status ---
-                </option>
-                <option *ngFor="let task of tasks" >
-                  {{task.issueStatus}}
-                </option>
-              </select>
-              <!-- Required Validation Message -->
-              <div *ngIf="form.submitted && DDCategory.invalid" class="text-danger">
-                <h6 *ngIf="DDCategory.errors.required">Category is Required</h6>
-              </div>
-            </div>
-            <button class="btn btn-primary">Submit</button>
-          </form>
         </div>
         <!---------------------------- dropdown By Username -------------------------------------------->
         <div class="col-xl-3 col-lg-6">
@@ -57,16 +33,11 @@
                 <option value="" class="text-primary font-weight-bolder">
                   --- Select User ---
                 </option>
-                <option *ngFor="let employee of employees" >
-                  {{employee.userName}}
+                <option *ngFor="let employee of employees">
+                  <button (onclick)=profile(employee.id)>{{employee.userName}}</button>
                 </option>
               </select>
-              <!-- Required Validation Message -->
-              <div *ngIf="form.submitted && DDCategory.invalid" class="text-danger">
-                <h6 *ngIf="DDCategory.errors.required">Category is Required</h6>
-              </div>
             </div>
-            <button class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
@@ -115,8 +86,9 @@
                   {{task.issueStatus}}
                 </td>
                 <td>
-                  <button type="submit">Send SMS</button>
-                  <button type="submit">Send Email</button>
+                  <button (click)="onSave($event)">Save</button>
+                  <button (click)="onSave()">Send Email</button>
+
                 </td>
               </tr>
             </tbody>
