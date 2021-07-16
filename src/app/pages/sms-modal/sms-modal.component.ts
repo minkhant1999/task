@@ -25,6 +25,9 @@ export class SmsModalComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  passBack() {
+    this.passEntry.emit(this.user);
+    this.activeModal.close(this.user);
+  }
 
 }

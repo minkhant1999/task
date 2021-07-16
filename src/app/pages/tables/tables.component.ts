@@ -15,7 +15,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class TablesComponent implements OnInit {
   selectedUser: string = '';
   selectedTask: string = '';
-
+  public user = {
+    userName: '',
+  }
   employees: Observable<Employee[]>;
   tasks: Observable<Task[]>;
 

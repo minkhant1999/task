@@ -16,7 +16,7 @@
                   {{task.task}}
                 </option>
               </select>
-    <p><span>You selected: </span><b>{{selectedTask}}</b></p>
+              <p><span>You selected: </span><b>{{selectedTask}}</b></p>
 
             </div>
           </form>
@@ -27,7 +27,7 @@
         <!---------------------------- dropdown By Username -------------------------------------------->
         <div class="col-xl-3 col-lg-6">
           <!-- DropDownList -->
-          <select  (change)="selectChangeUser($event)">
+          <select (change)="selectChangeUser($event)">
             <option class="text-primary font-weight-bolder">
               --- Select User ---
             </option>
@@ -35,7 +35,7 @@
               {{employee.userName}}
             </option>
           </select>
-    <p><span>You selected: </span><b>{{selectedUser}}</b></p>
+          <p><span>You selected: </span><b>{{selectedUser}}</b></p>
 
         </div>
       </div>
@@ -88,7 +88,7 @@
                   {{task.userName}}
                 </td>
                 <td>
-                  <button (click)="openSmsModal()">Send SMS</button>
+                  <button (click)="openSmsModal(task)">Send SMS</button>
                   <button (click)="openEmailModal()">Send Email</button>
 
                 </td>
