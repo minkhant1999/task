@@ -5,5 +5,6 @@ export class Task {
     crNo:string;
     dueDate:string;
     issueStatus:string;
+    userName:string;
 
 }

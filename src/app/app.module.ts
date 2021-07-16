@@ -16,6 +16,8 @@ import { EmployeeListComponent } from './pages/employee-list/employee-list.compo
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SmsModalComponent } from './pages/sms-modal/sms-modal.component';
+import { EmailModalComponent } from './pages/email-modal/email-modal.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     EmployeeListComponent,
-    ProfileComponent
+    ProfileComponent,
+    SmsModalComponent,
+    EmailModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

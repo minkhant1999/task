@@ -8,8 +8,7 @@
           <form name="form" (ngSubmit)="form.valid && onSubmit()" #form="ngForm">
             <div class="form-group">
               <!-- DropDownList -->
-              <select class="custom-select" name="DDCategory" [(ngModel)]="ddlCategory" #DDCategory="ngModel"
-                [ngClass]="{ 'is-invalid': form.submitted && DDCategory.invalid }" required>
+              <select (change)="selectChangeTask($event)">
                 <option value="" class="text-primary font-weight-bolder">
                   --- Select Task ---
                 </option>
@@ -17,6 +16,8 @@
                   {{task.task}}
                 </option>
               </select>
+    <p><span>You selected: </span><b>{{selectedTask}}</b></p>
+
             </div>
           </form>
         </div>
@@ -25,20 +26,17 @@
         </div>
         <!---------------------------- dropdown By Username -------------------------------------------->
         <div class="col-xl-3 col-lg-6">
-          <form name="form" (ngSubmit)="form.valid && onSubmit()" #form="ngForm">
-            <div class="form-group">
-              <!-- DropDownList -->
-              <select class="custom-select" name="DDCategory" [(ngModel)]="issueStatusList" #DDCategory="ngModel"
-                [ngClass]="{ 'is-invalid': form.submitted && DDCategory.invalid }" required>
-                <option value="" class="text-primary font-weight-bolder">
-                  --- Select User ---
-                </option>
-                <option *ngFor="let employee of employees">
-                  <button (onclick)=profile(employee.id)>{{employee.userName}}</button>
-                </option>
-              </select>
-            </div>
-          </form>
+          <!-- DropDownList -->
+          <select  (change)="selectChangeUser($event)">
+            <option class="text-primary font-weight-bolder">
+              --- Select User ---
+            </option>
+            <option *ngFor="let employee of employees">
+              {{employee.userName}}
+            </option>
+          </select>
+    <p><span>You selected: </span><b>{{selectedUser}}</b></p>
+
         </div>
       </div>
     </div>
@@ -62,6 +60,7 @@
                 <th scope="col">Type</th>
                 <th scope="col">Due Date</th>
                 <th scope="col">Status</th>
+                <th scope="col">Assignee</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -86,8 +85,11 @@
                   {{task.issueStatus}}
                 </td>
                 <td>
-                  <button (click)="onSave($event)">Save</button>
-                  <button (click)="onSave()">Send Email</button>
+                  {{task.userName}}
+                </td>
+                <td>
+                  <button (click)="openSmsModal()">Send SMS</button>
+                  <button (click)="openEmailModal()">Send Email</button>
 
                 </td>
               </tr>
