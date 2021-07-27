@@ -14,7 +14,10 @@ import { TaskService } from 'src/app/tasks.service';
 export class SmsModalComponent implements OnInit {
 
   tasks: Observable<Task[]>;
-  sms: Observable<Sms[]>;
+  // sms: Observable<Sms[]>;
+  sms: Sms;
+
+  
 
   @Input() public user;
   @Output() passEntry: EventEmitter<any> = new EventEmitter();
@@ -23,6 +26,11 @@ export class SmsModalComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal, private taskService: TaskService, private smsService: SmsService) { }
 
   ngOnInit() {
+      this.sms.employeeIds = [1];
+      this.sms.content = "This is example";
+      this.sms.informType = InformType.SMS;
+      this.sms.subject = "Testing";
+      this.sms.cc = null;
   }
 
   passBack() {
@@ -30,4 +38,7 @@ export class SmsModalComponent implements OnInit {
     this.activeModal.close(this.user);
   }
 
+  sendSms(){
+    this.smsService.sendSMS(this.sms);
+  }
 }

@@ -1,5 +1,7 @@
 export class Sms {
-    employeeIds:string;
+    employeeIds:number[];
     content:string;
+    informType: InformType;
     subject:string;
+    cc: number[];
 }
