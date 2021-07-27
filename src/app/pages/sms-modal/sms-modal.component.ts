@@ -26,10 +26,10 @@ export class SmsModalComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal, private taskService: TaskService, private smsService: SmsService) { }
 
   ngOnInit() {
-      this.sms.employeeIds = [1];
+      this.sms.employeeIds = [34,25];
       this.sms.content = "This is example";
       this.sms.informType = InformType.SMS;
-      this.sms.subject = "Testing";
+      // this.sms.subject = "Testing";
       this.sms.cc = null;
   }
 
