@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 import { Sms } from 'src/app/Sms';
 import { SmsService } from 'src/app/sms.service';
-import { Task } from 'src/app/tasks';
 import { TaskService } from 'src/app/tasks.service';
 
 @Component({
@@ -13,32 +12,32 @@ import { TaskService } from 'src/app/tasks.service';
 })
 export class SmsModalComponent implements OnInit {
 
-  tasks: Observable<Task[]>;
-  // sms: Observable<Sms[]>;
-  sms: Sms;
+  Sms: Sms = new Sms();
+  submitted = false;
+  InformType = Sms;
 
-  
+constructor(public activeModal: NgbActiveModal, private router: Router, private taskService: TaskService, private smsService: SmsService) { }
 
-  @Input() public user;
-  @Output() passEntry: EventEmitter<any> = new EventEmitter();
-
-
-  constructor(public activeModal: NgbActiveModal, private taskService: TaskService, private smsService: SmsService) { }
-
-  ngOnInit() {
-      this.sms.employeeIds = [34,25];
-      this.sms.content = "This is example";
-      this.sms.informType = InformType.SMS;
-      // this.sms.subject = "Testing";
-      this.sms.cc = null;
-  }
-
-  passBack() {
-    this.passEntry.emit(this.user);
-    this.activeModal.close(this.user);
-  }
-
-  sendSms(){
-    this.smsService.sendSMS(this.sms);
-  }
+ngOnInit(): void {
+  // this.sms.employeeIds = [34,25];
+  // this.sms.content = "This is example";
+  // this.sms.informType = InformType.SMS;
+  // this.sms.subject = "Testing";
+  // this.sms.cc = null;
 }
+newSMS(): void {
+  this.submitted = false;
+  this.Sms = new Sms();
+}
+
+sendSms() {
+  this.submitted = true;
+  this.smsService.sendSMS(this.Sms).subscribe(data => {
+    console.log(data);
+    this.Sms = new Sms();
+  },
+    error => console.log(error)
+  );
+}
+}
+
