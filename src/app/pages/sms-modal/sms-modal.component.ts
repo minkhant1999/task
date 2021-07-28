@@ -12,29 +12,28 @@ import { TaskService } from 'src/app/tasks.service';
 })
 export class SmsModalComponent implements OnInit {
 
-  Sms: Sms = new Sms();
+  sms: Sms  = new Sms();
   submitted = false;
-  InformType = Sms;
+  // InformType = Sms;
 
 constructor(public activeModal: NgbActiveModal, private router: Router, private taskService: TaskService, private smsService: SmsService) { }
 
 ngOnInit(): void {
-  // this.sms.employeeIds = [34,25];
-  // this.sms.content = "This is example";
-  // this.sms.informType = InformType.SMS;
-  // this.sms.subject = "Testing";
-  // this.sms.cc = null;
+  this.sms.employeeIds=[21,22];
+  this.sms.content='Only example';
+  this.sms.informType=InformType.SMS;
+  this.sms.cc=[23,24];
 }
 newSMS(): void {
   this.submitted = false;
-  this.Sms = new Sms();
+  this.sms = new Sms();
 }
 
-sendSms() {
+sendSmsToMember() {
   this.submitted = true;
-  this.smsService.sendSMS(this.Sms).subscribe(data => {
+  this.smsService.sendSMS(this.sms).subscribe(data => {
     console.log(data);
-    this.Sms = new Sms();
+    // this.sms = new Sms();
   },
     error => console.log(error)
   );

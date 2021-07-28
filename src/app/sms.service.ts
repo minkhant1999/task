@@ -12,9 +12,9 @@ export class SmsService {
     this.url = "http://10.201.118.7:9000/task-management-tool/employees/multi-sms";
   }
 
-  sendSMS(Sms: Sms): Observable<Object>{
+  sendSMS(sms: Sms): Observable<Object>{
     console.log(Sms);
-    return this.httpClient.post(`${this.url}`, Sms);
+    return this.httpClient.post(`${this.url}`, sms);
   }
 
 

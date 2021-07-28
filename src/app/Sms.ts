@@ -1,5 +1,5 @@
 export class Sms {
-    employeeIds:number[];
+    employeeIds:Array<number>;
     content:string;
     informType: InformType;
     subject:string;
