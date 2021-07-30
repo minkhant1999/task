@@ -1,0 +1,18 @@
+<div class="toggle-button">
+    <button (click)="isDisabled = !isDisabled">
+      <ng-container *ngIf="isDisabled; else disableButtonText">
+        Enable ngx-chips
+      </ng-container>
+      <ng-template #disableButtonText>
+        Disable ngx-chips  
+      </ng-template>
+    </button>
+  </div>
+  
+  <div class="tag-input">
+    <tag-input [(ngModel)]="selectedTagItems" [identifyBy]="'id'" [disable]="isDisabled" [displayBy]="'title'">
+      <tag-input-dropdown [appendToBody]="true" [showDropdownIfEmpty]="true" [autocompleteItems]="tagItems"
+        [identifyBy]="'id'" [displayBy]="'title'">
+      </tag-input-dropdown>
+    </tag-input>
+  </div>

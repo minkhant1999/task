@@ -1,0 +1,12 @@
+.toggle-button {
+    margin: 1em
+  }
+  
+  .toggle-button button {
+    padding: 1em;
+    border-radius: 5px
+  }
+  
+  .tag-input {
+    margin: 1em
+  }

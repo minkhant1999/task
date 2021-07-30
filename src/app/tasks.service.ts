@@ -13,7 +13,7 @@ export class TaskService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.url = "http://10.201.118.7:9000/task-management-tool/jira-tasks/main-tasks";
+    this.url = "http://10.201.118.7:9991/task-management-tool/jira-tasks/main-tasks";
   }
 
   getTask(id: number): Observable<any> {
