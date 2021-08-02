@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { FormsModule } from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 import { AppRoutingModule } from './app.routing';
@@ -39,6 +40,7 @@ import { TagInputComponent } from './pages/sms-modal/tag-input/tag-input.compone
     MatButtonModule,
     ReactiveFormsModule,
     TagInputModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   declarations: [
     AppComponent,

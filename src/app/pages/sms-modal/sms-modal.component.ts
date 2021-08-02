@@ -34,17 +34,16 @@ ngOnInit(): void {
   // this.sms.informType='SMS';
   // this.sms.subject='';
   // this.sms.cc=[21,22];
-  this.sms.employeeIds=[21,22];
+  this.sms.employeeIds=[];
 
 }
 sendSmsToMember() {
   this.submitted = true;
-  
 
   this.sms.informType='SMS';
   this.sms.cc=[];
   this.sms.content='';
-  this.sms.employeeIds=[21,22];
+  this.sms.employeeIds=[];
 
   this.smsService.sendSMS(this.sms).subscribe(data => {
     console.log(data);

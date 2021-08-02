@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Email } from 'src/app/email';
+import { EmailService } from 'src/app/email.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { EmployeeService } from 'src/app/employee.service';
+import { Employee } from 'src/app/employee';
 
 @Component({
   selector: 'app-email-modal',
@@ -6,10 +14,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./email-modal.component.css']
 })
 export class EmailModalComponent implements OnInit {
-
-  constructor() { }
+  submitted = false;
+  email:Email = new Email();
+  constructor(public activeModal: NgbActiveModal, private router: Router, private emailService: EmailService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
-
+  sendSmsToMember() {
+    this.submitted = true;
+  
+    this.email.informType='EMAIL';
+    this.email.cc=[];
+    this.email.content='';
+    this.email.employeeIds=[];
+  
+    this.emailService.sendSMS(this.email).subscribe(data => {
+      console.log(data);
+      // console.log(InformType);
+      // this.sms = new Sms();
+    },
+      error => console.log(error)
+    );
+  }
 }

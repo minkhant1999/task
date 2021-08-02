@@ -7,6 +7,7 @@ import { EmployeeService } from 'src/app/employee.service';
 import { Router } from '@angular/router';
 import { SmsModalComponent } from '../sms-modal/sms-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EmailModalComponent } from '../email-modal/email-modal.component';
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
@@ -73,7 +74,7 @@ export class TablesComponent implements OnInit {
    }
 
    openEmailModal() {
-    const modalRef = this.modalService.open(SmsModalComponent);
+    const modalRef = this.modalService.open(EmailModalComponent);
     modalRef.componentInstance.user = this.employees;
     modalRef.result.then((result) => {
       if (result) {

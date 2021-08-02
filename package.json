@@ -33,12 +33,14 @@
     "keycloak-angular": "^8.2.0",
     "keycloak-js": "^14.0.0",
     "lodash": "^4.17.21",
+    "ng-multiselect-dropdown": "^0.3.4",
     "ngx-bootstrap": "^7.0.0",
     "ngx-chips": "^2.2.2",
     "ngx-clipboard": "13.0.1",
     "ngx-toastr": "13.0.0",
     "nouislider": "14.6.2",
     "rxjs": "^6.6.3",
+    "tslib": "^2.3.0",
     "zone.js": "0.11.1"
   },
   "devDependencies": {
