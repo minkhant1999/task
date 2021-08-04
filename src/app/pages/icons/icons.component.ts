@@ -1,18 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { Component, VERSION, ViewChild, ElementRef } from "@angular/core";
 
 @Component({
   selector: 'app-icons',
   templateUrl: './icons.component.html',
   styleUrls: ['./icons.component.css']
 })
-export class IconsComponent implements OnInit {
+export class IconsComponent {
  
+  name = "Angular " + VERSION.major;
 
-  constructor() { }
+  
 
-  ngOnInit() {
+  @ViewChild("myNameElem") myNameElem: ElementRef;
+
+  
+
+  getValue() {
+
+    console.log(this.myNameElem.nativeElement.value);
+
+  }
+
+  
+
+  resetValue() {
+
+    this.myNameElem.nativeElement.value = "";
+
   }
 
 }

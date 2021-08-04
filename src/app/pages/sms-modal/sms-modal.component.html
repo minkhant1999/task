@@ -15,7 +15,7 @@
   <!-- Message -->
   <div class="form-group">
     <label for="recipient-name" class="col-form-label">Message:</label>
-    <textarea type="text" class="form-control" required [(ngModel)]="sms.content" name="content"></textarea>
+    <textarea type="text" class="form-control" id="content" required [(ngModel)]="sms.content" name="content" #content></textarea>
   </div>
 
 </div>

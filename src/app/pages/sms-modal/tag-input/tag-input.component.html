@@ -1,5 +1,5 @@
 
-<ng-multiselect-dropdown
+<ng-multiselect-dropdown  (ChangeIdEvent)="changeId($event)"
 
   [placeholder]="'custom placeholder'"
   [settings]="dropdownSettings"
@@ -7,5 +7,7 @@
   [(ngModel)]="selectedItems"
   (onSelect)="onItemSelect($event)"
   (onSelectAll)="onSelectAll($event)"
+  (onDeSelect)="onDeSelect($event)"
+ 
 >
 </ng-multiselect-dropdown>
