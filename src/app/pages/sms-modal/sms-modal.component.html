@@ -11,7 +11,7 @@
 
   <label for="recipient-name" class="col-form-label">Recipient:</label>
   <!-- tag -->
-  <app-tag-input></app-tag-input>
+  <app-tag-input (changeEmployeeIds)="employeeIdsEvent($event)"></app-tag-input>
   <!-- Message -->
   <div class="form-group">
     <label for="recipient-name" class="col-form-label">Message:</label>

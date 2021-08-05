@@ -5,16 +5,13 @@ import { EmployeeService } from 'src/app/employee.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { EmployeeInfo } from 'src/app/models/EmployeeInfo';
-import { log } from 'console';
 @Component({
   selector: 'app-tag-input',
   templateUrl: './tag-input.component.html',
   styleUrls: ['./tag-input.component.css']
 })
 export class TagInputComponent implements OnInit {
-  @Output()
-
-  ChangeIdEvent = new EventEmitter();
+  @Output() changeEmployeeIds = new EventEmitter<any>();
 
   employees: [];
   dropdownList = [];
@@ -24,12 +21,13 @@ export class TagInputComponent implements OnInit {
   employeeIds: number[];
 
   constructor(private employeeService: EmployeeService, private router: Router) { }
+  
   ngOnInit() {
     this.employeeIds = new Array();
     this.reloadData();
 
     this.selectedItems = [
-      this.content = (<HTMLInputElement>document.getElementById("content")).value
+      // this.content = (<HTMLInputElement>document.getElementById("content")).value
     ];
     this.dropdownSettings = {
       singleSelection: false,
@@ -49,14 +47,15 @@ export class TagInputComponent implements OnInit {
       console.log("log customer", this.employees);
     });
   }
+
   onItemSelect(item: EmployeeInfo) {
     console.log("item select function: ",item);
     this.employeeIds.push(item.id);
     console.log("employeeIds: ",this.employeeIds);
-    this.ChangeIdEvent.emit(this.employeeIds);
-    // console.log("Change ID",this.employeeIds);
-
+    this.changeEmployeeIds.emit(this.employeeIds);
+    console.log("finish call changeEmployeeIds");
   }
+
   onSelectAll(items: any) {
     console.log("select all function: ",items);
   }
@@ -68,6 +67,4 @@ export class TagInputComponent implements OnInit {
    }
    console.log("employeeIds: ", this.employeeIds);
   }
-
-  
 }

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Sms } from 'src/app/Sms';
+import { TagInputComponent } from './tag-input/tag-input.component';
 import { SmsService } from 'src/app/sms.service';
 import { TaskService } from 'src/app/tasks.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -18,29 +19,31 @@ import { EmployeeInfo } from 'src/app/models/EmployeeInfo';
   templateUrl: './sms-modal.component.html',
   styleUrls: ['./sms-modal.component.css']
 })
-export class SmsModalComponent implements OnInit {
-  newID =[];
-  EmployeeInfo = new EmployeeInfo();
+export class SmsModalComponent {
+  @Input() employeeIds;
+  @ViewChild(TagInputComponent) taginput:TagInputComponent;
+
+  // employeeIds : number[];
   sms: Sms  = new Sms();
   submitted = false;
   
 constructor(public activeModal: NgbActiveModal, private router: Router, private taskService: TaskService, private smsService: SmsService,private fb: FormBuilder) { }
+newID =[];
 
 ngOnInit(): void {
+  // console.log(this.sms.employeeIds);
+}
 
-  // this.sms.employeeIds=[21,22];
-  // this.sms.content='';
-  // this.sms.informType='SMS';
-  // this.sms.subject='';
-  // this.sms.cc=[21,22];
-  this.sms.employeeIds=[25,47,48,32,49,33,30,61];
 
+
+employeeIdsEvent(employeeIds: any){
+  this.sms.employeeIds = employeeIds;
 }
 
 sendSmsToMember() {
-  
-  // this.submitted = true;
+
   this.sms.informType='SMS';
+  // this.submitted = true;
   // this.sms.cc=[];
   // this.sms.content='';
   // this.sms.employeeIds=[];
